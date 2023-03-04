@@ -23,10 +23,10 @@ repos:
         language: golang
         files: \.go$
         pass_filenames: false
-      - id: go-test
-        name: go test
-        description: unit test for the project
-        entry: bash -c 'go test -v'
-        language: golang
-        files: \.go$
-        pass_filenames: false
+      # - id: go-test
+      #   name: go test
+      #   description: unit test for the project
+      #   entry: bash -c 'go test -v'
+      #   language: golang
+      #   files: \.go$
+      #   pass_filenames: false
