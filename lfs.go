@@ -30,7 +30,7 @@ func (c *LocalDiskClient) UploadBuffer(content []byte, key string) (err error) {
 	if err != nil {
 		return
 	}
-	return os.WriteFile(destpath, content, 0666)
+	return os.WriteFile(destpath, content, 0777)
 }
 
 func (c *LocalDiskClient) AppendBuffer(content []byte, key string) (err error) {
@@ -52,7 +52,7 @@ func (c *LocalDiskClient) AppendBuffer(content []byte, key string) (err error) {
 
 func (c *LocalDiskClient) Open(key string) (*os.File, error) {
 	filepath := c.getPath(key)
-	return os.Open(filepath)
+	return os.OpenFile(filepath, os.O_RDONLY, 0777)
 }
 
 func (c *LocalDiskClient) ReadFile(key string) ([]byte, error) {
