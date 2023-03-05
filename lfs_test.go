@@ -167,7 +167,7 @@ func TestLocalDiskClient_CreateDownloadStream(t *testing.T) {
 		_ = os.Remove(dest)
 	})
 
-	t.Run("should get undefined when file not exists", func(t *testing.T) {
+	t.Run("should get nil when file not exists", func(t *testing.T) {
 		f, err := client.Open("hello/notexists.tgz")
 		assert.True(t, os.IsNotExist(err))
 		assert.True(t, f == nil)
@@ -194,6 +194,7 @@ func TestLocalDiskClient_ReadBytes(t *testing.T) {
 
 	t.Run("should get empty slice when file not exists", func(t *testing.T) {
 		key := "hello/download-bar.tgz"
+		_ = os.Remove(path.Join(dir, key))
 		b, err := client.ReadFile(key)
 		assert.True(t, os.IsNotExist(err))
 		assert.True(t, len(b) == 0)
