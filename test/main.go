@@ -1,16 +1,3 @@
-# lfs
-
-A local file storage tool
-
-## Install
-
-``` sh
-$ go get -u github.com/Binbiubiubiu/lfs
-```
-
-## Example
-
-``` go
 package main
 
 import (
@@ -74,10 +61,3 @@ func main() {
 		log.Fatal(err)
 	}
 }
-
-```
-
-
-## Thanks
-
-[fs-cnpm](https://github.com/cnpm/fs-cnpm)  fs storage wrapper for cnpm

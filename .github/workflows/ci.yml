@@ -41,9 +41,10 @@ jobs:
 
     - name: Run golangci-lint
       uses: golangci/golangci-lint-action@v3
+      with:
+        args: --timeout 3m
 
     - name: Run test
-      if: matrix.os != 'windows-latest'
       run: go test -v
 
     
