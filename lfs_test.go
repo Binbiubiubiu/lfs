@@ -144,6 +144,7 @@ func TestLocalDiskClient_CreateDownloadStream(t *testing.T) {
 			t.Error(err)
 			return
 		}
+		defer src.Close()
 
 		dest := path.Join(dir, "world")
 		ws, err := os.OpenFile(dest, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0777)
@@ -151,6 +152,7 @@ func TestLocalDiskClient_CreateDownloadStream(t *testing.T) {
 			t.Error(err)
 			return
 		}
+		defer ws.Close()
 
 		_, err = io.Copy(ws, src)
 		if err != nil {
@@ -171,6 +173,7 @@ func TestLocalDiskClient_CreateDownloadStream(t *testing.T) {
 		f, err := client.Open("hello/notexists.tgz")
 		assert.True(t, os.IsNotExist(err))
 		assert.True(t, f == nil)
+		defer f.Close()
 	})
 }
 
@@ -282,6 +285,7 @@ func Example() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer f.Close()
 	fmt.Printf("Open: %s", f.Name())
 
 	bs, err := client.ReadFile(key)
