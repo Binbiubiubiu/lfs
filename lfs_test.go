@@ -198,7 +198,7 @@ func TestLocalDiskClient_ReadBytes(t *testing.T) {
 		b, err := client.ReadFile(key)
 
 		assert.True(t, os.IsNotExist(err), err)
-		assert.False(t, len(b) == 0, b)
+		assert.True(t, len(b) == 0, b)
 	})
 }
 
