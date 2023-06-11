@@ -196,8 +196,9 @@ func TestLocalDiskClient_ReadBytes(t *testing.T) {
 		key := "hello/download-bar.tgz"
 		_ = os.Remove(path.Join(dir, key))
 		b, err := client.ReadFile(key)
-		assert.True(t, os.IsNotExist(err))
-		assert.True(t, len(b) == 0)
+
+		assert.True(t, os.IsNotExist(err), err)
+		assert.False(t, len(b) == 0, b)
 	})
 }
 
