@@ -4,7 +4,7 @@ import (
 	"errors"
 	"io/fs"
 	"os"
-	"path"
+	path "path/filepath"
 )
 
 type LocalDiskClient struct {

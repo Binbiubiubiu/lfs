@@ -5,7 +5,7 @@ import (
 	"io"
 	"log"
 	"os"
-	"path"
+	path "path/filepath"
 	"runtime"
 	"strconv"
 	"testing"
