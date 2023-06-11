@@ -194,9 +194,9 @@ func TestLocalDiskClient_ReadBytes(t *testing.T) {
 
 	t.Run("should get empty slice when file not exists", func(t *testing.T) {
 		key := "hello/download-bar.tgz"
-		_ = os.Remove(path.Join(dir, key))
+		err := os.Remove(path.Join(dir, key))
+		assert.Nil(t, err, err)
 		b, err := client.ReadFile(key)
-
 		assert.True(t, os.IsNotExist(err), err)
 		assert.True(t, len(b) == 0, b)
 	})
