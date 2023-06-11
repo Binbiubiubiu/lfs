@@ -57,11 +57,7 @@ func (c *LocalDiskClient) Open(key string) (*os.File, error) {
 
 func (c *LocalDiskClient) ReadFile(key string) ([]byte, error) {
 	filepath := c.getPath(key)
-	b, err := os.ReadFile(filepath)
-	if err != nil {
-		return []byte{}, err
-	}
-	return b, nil
+	return os.ReadFile(filepath)
 }
 
 func (c *LocalDiskClient) Download(key string, savePath string) (err error) {
