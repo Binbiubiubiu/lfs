@@ -189,7 +189,7 @@ func TestLocalDiskClient_ReadBytes(t *testing.T) {
 			return
 		}
 		assert.Equal(t, expected, actual)
-		_ = os.Remove(path.Join(dir, key))
+		// _ = os.Remove(path.Join(dir, key))
 	})
 
 	t.Run("should get empty slice when file not exists", func(t *testing.T) {
