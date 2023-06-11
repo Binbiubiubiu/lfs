@@ -9,7 +9,7 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
-    
+
 permissions:
   contents: read
   pull-requests: read
@@ -24,9 +24,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - name: Set up Go
-      uses: actions/setup-go@v3
+      uses: actions/setup-go@v4
       with:
         go-version: ${{ matrix.go-version }}
+        cache: false # setup-go v4 caches by default
     - uses: actions/cache@v3
       with:
         path: |
@@ -46,5 +47,3 @@ jobs:
 
     - name: Run test
       run: go test -v
-
-    
